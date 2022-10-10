@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'date'
 # class for Item
 class Item
   attr_accessor :publish_date, :genre, :author, :source, :label
@@ -24,5 +25,19 @@ class Item
 
   def add_label(label)
     @label = label
+  end
+
+  def can_be_achieved(date)
+    date = Date.parse(date).year
+    data_now = Date.today.year
+    (data_now - date) > 10
+  end
+
+  def move_to_archive
+    if can_be_achieved
+      true
+    else
+      false
+    end
   end
 end
