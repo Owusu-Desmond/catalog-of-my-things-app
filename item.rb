@@ -27,6 +27,8 @@ class Item
     @label = label
   end
 
+  private
+
   def can_be_achieved(date)
     date = Date.parse(date).year
     data_now = Date.today.year
