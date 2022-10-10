@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# class for Item
 class Item
   attr_accessor :publish_date, :genre, :author, :source, :label
 
