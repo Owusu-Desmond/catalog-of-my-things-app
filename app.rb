@@ -2,7 +2,6 @@
 
 # class application
 class App
-  # rubocop:disable Metrics/MethodLength
   def run
     puts 'Welcome to Catalog my thing'
     loop do
@@ -16,7 +15,6 @@ class App
       options(option)
     end
   end
-  # rubocop:enable Metrics/MethodLength
 
   def menu_message
     puts 'Welcome to my catalog app'
@@ -29,7 +27,6 @@ class App
     puts '7: Exit the application'
   end
 
-  # rubocop:disable Metrics/MethodLength
   def options(option)
     case option
     when 1
@@ -46,5 +43,4 @@ class App
       puts 'You puts in the sisth option'
     else puts 'Invalid option' end
   end
-  # rubocop:enable Metrics/MethodLength
 end
