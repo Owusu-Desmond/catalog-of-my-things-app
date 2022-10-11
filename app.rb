@@ -1,5 +1,14 @@
+require_relative 'game/game'
+require_relative 'game/game_module'
+
 # class application
 class App
+  def initialize
+    @games = []
+  end
+
+  include GameModule
+
   def run
     puts 'Welcome to Catalog my thing'
     loop do
@@ -19,9 +28,9 @@ class App
     puts '1: This is the first option'
     puts '2: This is the second option'
     puts '3: This is the third option'
-    puts '4: This is the fourth option'
-    puts '5: This is the fifth option'
-    puts '6: This is the sixth option'
+    puts '4: List all authors'
+    puts '5: List of games'
+    puts '6: Add a game'
     puts '7: Exit the application'
   end
 
@@ -34,11 +43,11 @@ class App
     when 3
       puts 'You puts in the third option'
     when 4
-      puts 'You puts in the fourth option'
+      puts 'You puts in the list all authors option'
     when 5
-      puts 'You puts in the fifth option'
+      list_games
     when 6
-      puts 'You puts in the sisth option'
+      add_game
     else puts 'Invalid option' end
   end
 end
