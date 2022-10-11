@@ -1,13 +1,17 @@
 require_relative 'game/game'
 require_relative 'game/game_module'
+require_relative 'author/author'
+require_relative 'author/author_module'
 
 # class application
 class App
   def initialize
     @games = []
+    @authors = []
   end
 
   include GameModule
+  include AuthorModule
 
   def run
     puts 'Welcome to Catalog my thing'
@@ -24,6 +28,7 @@ class App
   end
 
   def menu_message
+    puts '--------------------------------'
     puts 'Welcome to my catalog app'
     puts '1: This is the first option'
     puts '2: This is the second option'
@@ -32,6 +37,7 @@ class App
     puts '5: List of games'
     puts '6: Add a game'
     puts '7: Exit the application'
+    puts '--------------------------------'
   end
 
   def options(option)
@@ -43,7 +49,7 @@ class App
     when 3
       puts 'You puts in the third option'
     when 4
-      puts 'You puts in the list all authors option'
+      puts list_authors
     when 5
       list_games
     when 6

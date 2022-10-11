@@ -1,10 +1,10 @@
-require_relative 'item'
+require_relative '../item'
 
 class Author
   attr_accessor :id, :first_name, :last_name, :items
 
-  def initialize(id, first_name, last_name)
-    @id = id
+  def initialize(first_name, last_name, id = nil)
+    @id = id || Random.rand(1..1000)
     @first_name = first_name
     @last_name = last_name
     @items = []
@@ -12,6 +12,6 @@ class Author
 
   def add_item(item)
     @items.push(item)
-    item.add_author(self)
+    item.author = self
   end
 end
