@@ -1,5 +1,4 @@
 module GameModule
-
   def add_game(multiplayer, last_played_at, publish_date, author_first_name, author_last_name)
     author = Author.new(author_first_name, author_last_name)
     new_game = Game.new(multiplayer, last_played_at, publish_date)
@@ -9,7 +8,7 @@ module GameModule
     # save_game(new_game)
     @games.push({ 'multiplayer' => new_game.multiplayer, 'last_played_at' => new_game.last_played_at,
                   'publish_date' => new_game.publish_date })
-    return 'Game has been created successfully'
+    'Game has been created successfully'
   end
 
   # def save_game(new_game)

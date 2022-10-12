@@ -41,7 +41,7 @@ describe Author do
   describe AuthorModule do
     it 'returns author object' do
       dc = App.new
-      expect(dc.add_author(@author)).to eq([{"first_name"=>"George", "last_name"=>"Wilkinson"}])
+      expect(dc.add_author(@author)).to eq([{ 'first_name' => 'George', 'last_name' => 'Wilkinson' }])
     end
   end
 
@@ -52,5 +52,4 @@ describe Author do
       expect(dc.list_authors.size).to eq(1)
     end
   end
-
 end

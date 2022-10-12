@@ -35,14 +35,15 @@ describe Game do
     it 'add new game to the game list' do
       dc = App.new
       puts @games
-      expect(dc.add_game("true", "2021-07-07", "2011-04-04", "Mike", "Atherton")).to eq('Game has been created successfully')
+      expect(dc.add_game('true', '2021-07-07', '2011-04-04', 'Mike',
+                         'Atherton')).to eq('Game has been created successfully')
     end
   end
 
   describe GameModule do
     it 'Number of item in list the games equal to 1' do
       dc = App.new
-      dc.add_game("true", "2021-07-07", "2011-04-04", "Mike", "Atherton")
+      dc.add_game('true', '2021-07-07', '2011-04-04', 'Mike', 'Atherton')
       expect(dc.list_games.size).to eq(1)
     end
   end
