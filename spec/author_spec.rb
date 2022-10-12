@@ -4,7 +4,6 @@ require_relative 'spec_helper'
 describe Author do
   before :each do
     @author = Author.new('George', 'Wilkinson')
-    # @authors = []
   end
 
   describe '#new' do
@@ -47,7 +46,7 @@ describe Author do
   end
 
   describe AuthorModule do
-    it 'list the author' do
+    it 'Number of item in list the author equal to 1' do
       dc = App.new
       dc.add_author(@author)
       expect(dc.list_authors.size).to eq(1)
