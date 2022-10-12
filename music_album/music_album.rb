@@ -14,14 +14,14 @@ class MusicAlbum < Item
 
   def add_music_album
     print 'Enter name of music album: '
-    music_album = get.chomp
+    music_album = gets.chomp.capitalize.strip
     # if music album exists
-    if @music_album.find { |x| x == music_album }
+    if @music_albums.include?(music_album)
       puts 'Music album already exists'
       add_music_album
     else
-      @music_album << music_album
-      puts 'Music album added'
+      @music_albums << music_album
+      puts 'Music album added successfully!'
     end
   end
 
