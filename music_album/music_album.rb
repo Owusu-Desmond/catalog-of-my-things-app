@@ -3,7 +3,10 @@ require_relative '../item'
 class MusicAlbum < Item
   attr_accessor :on_spotify
 
-  def initialize(on_spotify)
+  def initialize(publish_date, label, author, on_spotify)
+    super(publish_date)
+    @label = label
+    @author = author
     @on_spotify = on_spotify
     @music_albums = []
   end
@@ -13,8 +16,14 @@ class MusicAlbum < Item
   end
 
   def add_music_album
-    print 'Enter name of music album: '
-    music_album = gets.chomp.capitalize.strip
+    print 'Enter the label of the music album that you want to add: '
+    label = gets.chomp.strip
+    print 'Enter the publish date of the music album that you want to add: '
+    publish_date = gets.chomp.strip
+    print 'Enter the author of the music album that you want to add: '
+    author = gets.chomp.strip
+    on_spotify = true
+    music_album = MusicAlbum.new(label, publish_date, author, on_spotify)
     # if music album exists
     if @music_albums.include?(music_album)
       puts 'Music album already exists'
@@ -32,6 +41,10 @@ class MusicAlbum < Item
       return
     end
     puts 'All music albums:'
-    @music_albums.each_with_index { |music_album, index| puts "#{index + 1}. #{music_album}" }
+    @music_albums.each_with_index do |music_album, index|
+      # print with label, publish date, author, on spotify
+      puts "#{index + 1} - [LABEL: #{music_album.label}, AUTHOR: #{music_album.author}]"
+      puts "    [PUBLISH DATE: #{music_album.date} ,ON SPOTIFY: #{music_album.on_spotify}]"
+    end
   end
 end
