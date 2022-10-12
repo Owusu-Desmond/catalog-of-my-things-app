@@ -18,17 +18,13 @@ class Item
 
   private
 
-  def can_be_achieved(date)
+  def can_be_archived?(date)
     date = Date.parse(date).year
     data_now = Date.today.year
     (data_now - date) > 10
   end
 
   def move_to_archive
-    if can_be_achieved
-      true
-    else
-      false
-    end
+    can_be_archived?
   end
 end

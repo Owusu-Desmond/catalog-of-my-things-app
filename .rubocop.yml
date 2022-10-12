@@ -1,7 +1,6 @@
 AllCops:
   NewCops: enable
   Exclude:
-
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
@@ -19,7 +18,6 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   IgnoredMethods: ['describe']
   Max: 30
-
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
