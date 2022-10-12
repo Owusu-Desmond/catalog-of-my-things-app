@@ -19,14 +19,22 @@ describe Game do
   end
 
   describe '#last_played_at' do
-    it 'return the true for last_played_at' do
+    it 'return the date for last_played_at' do
       @game.last_played_at.should eql Date.parse('2022-10-11')
     end
   end
 
   describe '#publish_date' do
-    it 'return the true for publish_date' do
+    it 'return the publish_date' do
       @game.publish_date.should eql '2019-11-11'
     end
+  end
+
+  describe 'add_game' do
+    
+  end
+
+  describe 'list_games' do
+
   end
 end

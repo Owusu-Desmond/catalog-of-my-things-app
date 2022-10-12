@@ -4,6 +4,7 @@ require_relative 'spec_helper'
 describe Author do
   before :each do
     @author = Author.new('George', 'Wilkinson')
+    # @authors = []
   end
 
   describe '#new' do
@@ -31,10 +32,26 @@ describe Author do
   end
 
   describe '#add_item' do
-    it 'return the lenth list of items' do
+    it 'return the length list of items' do
       game = Game.new(true, '2022-10-11', '2019-11-11')
       @author.add_item(game)
       expect(@author.items.size).to eq(1)
     end
   end
+
+  describe AuthorModule do
+    it 'returns author object' do
+      dc = App.new
+      expect(dc.add_author(@author)).to eq([{"first_name"=>"George", "last_name"=>"Wilkinson"}])
+    end
+  end
+
+  describe AuthorModule do
+    it 'list the author' do
+      dc = App.new
+      dc.add_author(@author)
+      expect(dc.list_authors.size).to eq(1)
+    end
+  end
+
 end
