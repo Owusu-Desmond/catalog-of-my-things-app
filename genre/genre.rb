@@ -21,6 +21,6 @@ class Genre < Item
             return
         end
         puts "All available genres:"
-        @items.each_with_index {|item, index| puts "#{index + 1}. #{item} - #{item.genre}}
+        @items.each_with_index {|item, index| puts "#{index + 1}. #{item} - #{item.genre}"}
     end
 end
