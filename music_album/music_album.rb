@@ -1,6 +1,6 @@
 require_relative 'item'
 class MusicAlbum < Item
-    attr_accessor :on_spotify, :music_albums
+    attr_accessor :on_spotify,
 
     def initialize(on_spotify)
         @on_spotify = on_spotify
@@ -11,9 +11,17 @@ class MusicAlbum < Item
         super(date) && on_spotify
     end
 
-    def add_music_album(music_album)
-        @music_albums << music_album
-        puts "Music album #{music_album} has been added successfully!"
+    def add_music_album
+        print "Enter name of music album: "
+        music_album = get.chomp
+        # if music album exists
+        if @music_album.find{|x| x == music_album}
+            puts "Music album already exists"
+            add_music_album
+        else
+            @music_album << music_album
+            puts "Music album added"
+        end
     end
 
     def list_music_albums
