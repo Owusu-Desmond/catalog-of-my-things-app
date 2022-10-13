@@ -1,19 +1,24 @@
 require 'date'
-# class for Item
+
 class Item
   attr_accessor :publish_date
+  attr_reader :author, :genre, :source, :label, :archived, :id
 
-  def initialize(publish_date, id = nil, archived: flase)
+  def initialize(publisher, publish_date, archived=false)
     @id = id || Random.rand(101..1000)
+    @publisher = publisher
     @publish_date = publish_date
     @archived = archived
   end
 
-  attr_reader :author, :genre, :source, :label
-
   def author=(author)
     @author = author
     author.items << self unless author.items.include?(self)
+  end
+
+  def label=(label)
+    @label = label
+    label.items << self unless label.items.include?(self)
   end
 
   private
