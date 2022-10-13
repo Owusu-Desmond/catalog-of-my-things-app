@@ -47,6 +47,11 @@ class App
     puts '--------------------------------'
   end
 
+  def read_input(message)
+    print "#{message}: "
+    gets.chomp
+  end
+
   def options(option)
     case option
     when 1
@@ -62,7 +67,12 @@ class App
     when 6
       list_games
     when 7
-      add_game
-    end
+      multiplayer = read_input('Is game multiplayer? [true, false]')
+      last_played_at = read_input('Game Last played at [yyyy-mm-dd]')
+      publish_date = read_input('Game publish at [yyyy-mm-dd]')
+      author_first_name = read_input('Author first name')
+      author_last_name = read_input('Author last name')
+      puts add_game(multiplayer, last_played_at, publish_date, author_first_name, author_last_name)
+    else puts 'Invalid option' end
   end
 end
