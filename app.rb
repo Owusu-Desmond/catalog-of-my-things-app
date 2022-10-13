@@ -11,11 +11,8 @@ class App
 
   def initialize
     @games = load_all_games
-    @authors = []
-
-    p @games
+    @authors = load_all_authors
   end
-
 
   def run
     puts 'Welcome to Catalog my thing'
@@ -25,8 +22,8 @@ class App
       option = gets.chomp.to_i
       if option == 7
         puts 'Thanks for using the app'
-        p @games
         save_all_games_to_file(@games)
+        save_all_authors_to_file(@authors)
         break
       end
       options(option)

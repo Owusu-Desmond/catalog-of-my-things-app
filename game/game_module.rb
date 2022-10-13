@@ -23,7 +23,8 @@ module GameModule
     data = []
 
     games.each do |game|
-      data.push({multiplayer: game['multiplayer'], last_played_at: game['last_played_at'].strftime("%Y-%m-%d"), publish_date: game['publish_date']})
+      data.push({ multiplayer: game['multiplayer'], last_played_at: game['last_played_at'].strftime('%Y-%m-%d'),
+                  publish_date: game['publish_date'] })
     end
 
     File.write(file_name, JSON.generate(data))
@@ -42,6 +43,6 @@ module GameModule
       end
     end
 
-    return data
+    data
   end
 end
