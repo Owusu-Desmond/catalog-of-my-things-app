@@ -18,7 +18,17 @@ class Item
 
   def label=(label)
     @label = label
-    label.items << self unless label.items.include?(self)
+    label.items << self unless author.items.include?(self)
+  end
+
+  def source=(source)
+    @source = source
+    source.items << self unless source.items.include?(source)
+  end
+
+  def genre=(genre)
+    @genre = genre
+    genre.items << self unless genre.items.include?(genre)
   end
 
   private
