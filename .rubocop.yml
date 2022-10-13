@@ -18,6 +18,8 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   IgnoredMethods: ['describe']
   Max: 30
+Metric/CyclomaticComplexity:
+  Max: 10
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
@@ -47,4 +49,6 @@ Style/HashEachMethods:
 Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
+  Enabled: false
+Style/OptionalBooleanParameter:
   Enabled: false
