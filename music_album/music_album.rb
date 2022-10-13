@@ -15,15 +15,19 @@ class MusicAlbum < Item
     super(date) && on_spotify
   end
 
-  def add_music_album
-    print 'Enter the label of the music album that you want to add: '
-    label = gets.chomp.strip
-    print 'Enter the publish date of the music album that you want to add: '
-    publish_date = gets.chomp.strip
-    print 'Enter the author of the music album that you want to add: '
-    author = gets.chomp.strip
-    on_spotify = true
-    music_album = MusicAlbum.new(label, publish_date, author, on_spotify)
+  def add_music_album(music_album = nil)
+    # if music album is not provided prompt user to input music album
+    if music_album.nil?
+      puts 'Please provide all information bellow.'
+      print 'Enter the label of the music album that you want to add: '
+      label = gets.chomp.strip
+      print 'Enter the publish date of the music album that you want to add: '
+      publish_date = gets.chomp.strip
+      print 'Enter the author of the music album that you want to add: '
+      author = gets.chomp.strip
+      on_spotify = true
+    end
+    music_album ||= MusicAlbum.new(label, publish_date, author, on_spotify)
     # if music album exists
     if @music_albums.include?(music_album)
       puts 'Music album already exists'
@@ -44,7 +48,9 @@ class MusicAlbum < Item
     @music_albums.each_with_index do |music_album, index|
       # print with label, publish date, author, on spotify
       puts "#{index + 1} - [LABEL: #{music_album.label}, AUTHOR: #{music_album.author}]"
-      puts "    [PUBLISH DATE: #{music_album.date} ,ON SPOTIFY: #{music_album.on_spotify}]"
+      puts "    [PUBLISH DATE: #{music_album.publish_date} ,ON SPOTIFY: #{music_album.on_spotify}]"
     end
+    # return music albums
+    @music_albums
   end
 end
