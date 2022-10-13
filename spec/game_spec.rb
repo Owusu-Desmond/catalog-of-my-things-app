@@ -45,7 +45,7 @@ describe Game do
       dc = App.new
       length = dc.list_games.size
       dc.add_game('true', '2021-07-07', '2011-04-04', 'Mike', 'Atherton')
-      expect(dc.list_games.size).to eq(length+1)
+      expect(dc.list_games.size).to eq(length + 1)
     end
   end
 end

@@ -51,7 +51,7 @@ describe Author do
       dc = App.new
       length = dc.list_authors.size
       dc.add_author(@author)
-      expect(dc.list_authors.size).to eq(length+1)
+      expect(dc.list_authors.size).to eq(length + 1)
     end
   end
 end
