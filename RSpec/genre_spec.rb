@@ -25,7 +25,7 @@ describe Genre do
     genre.add_item(item)
     genre.add_item(item2)
     it 'Lists all the items in that genre, returns an error if there are none' do
-      expect(genre.list_genre.size).to eq(4) # 1 for name of the genre and 2*2 for placeholders, 2 for item instances like this:
+      expect(genre.list_genre.size).to eq(4)
     end
   end
 end
