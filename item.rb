@@ -17,7 +17,7 @@ class Item
 
   def label=(label)
     @label = label
-    label.items << self unless author.items.include?(self)
+    label.items << self unless label.items.include?(self)
   end
 
   def source=(source)
@@ -32,8 +32,8 @@ class Item
 
   private
 
-  def can_be_archived?(date)
-    date = Date.parse(date).year
+  def can_be_archived?
+    date = Date.parse(@publish_date).year
     data_now = Date.today.year
     (data_now - date) > 10
   end
