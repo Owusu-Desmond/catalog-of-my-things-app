@@ -1,3 +1,4 @@
+require 'json'
 require_relative 'game/game'
 require_relative 'game/game_module'
 require_relative 'author/author'
@@ -7,16 +8,16 @@ require_relative 'book/book_module'
 require_relative 'label/label'
 
 class App
-  def initialize
-    @games = []
-    @authors = []
-    @books = []
-    @labels = []
-  end
-
   include GameModule
   include AuthorModule
   include BookModule
+
+  def initialize
+    @games = load_all_games
+    @authors = load_all_authors
+    @books = []
+    @labels = []
+  end
 
   def run
     puts 'Welcome to Catalog my thing'
@@ -26,6 +27,8 @@ class App
       option = gets.chomp.to_i
       if option == 8
         puts 'Thanks for using the app'
+        save_all_games_to_file(@games)
+        save_all_authors_to_file(@authors)
         break
       end
       options(option)
