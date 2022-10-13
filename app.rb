@@ -58,7 +58,7 @@ class App
     when 4
       add_label
     when 5
-      puts list_authors
+      list_authors
     when 6
       list_games
     when 7
