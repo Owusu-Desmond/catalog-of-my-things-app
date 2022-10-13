@@ -34,17 +34,17 @@ module BookModule
   def list_all_books
     puts "There are no books\n" if @books.empty?
     @books.each do |book|
-      puts "[Id]: #{book.id} - [Publish date and publisher]: #{book.publish_date} - #{book.publisher} - [cover state]: #{book.cover_state}"
+      puts "[Id]: #{book.id} / [Publish date]: #{book.publish_date}
+        - [Publisher] #{book.publisher} / [cover state]: #{book.cover_state}"
     end
     gets
   end
 
   def list_all_labels
-    puts "There are no books and labels" if @labels.empty?
-    @labels.each_with_index do |label|
+    puts 'There are no books and labels' if @labels.empty?
+    @labels.each do |label|
       puts "[Label title]: #{label.title} -[Label color]: #{label.color}"
     end
     gets
   end
 end
-
