@@ -10,7 +10,6 @@ class Item
     @archived = archived
   end
 
-
   def author=(author)
     @author = author
     author.items << self unless author.items.include?(self)
