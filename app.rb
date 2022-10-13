@@ -63,7 +63,6 @@ class App
       list_games
     when 7
       add_game
-    else puts 'Invalid option'
     end
   end
 end
