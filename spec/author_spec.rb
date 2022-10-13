@@ -41,15 +41,17 @@ describe Author do
   describe AuthorModule do
     it 'returns author object' do
       dc = App.new
-      expect(dc.add_author(@author)).to eq([{ 'first_name' => 'George', 'last_name' => 'Wilkinson' }])
+      length = dc.list_authors.size
+      expect(dc.add_author(@author)[length]).to eq({ 'first_name' => 'George', 'last_name' => 'Wilkinson' })
     end
   end
 
   describe AuthorModule do
     it 'Number of item in list the author equal to 1' do
       dc = App.new
+      length = dc.list_authors.size
       dc.add_author(@author)
-      expect(dc.list_authors.size).to eq(1)
+      expect(dc.list_authors.size).to eq(length+1)
     end
   end
 end

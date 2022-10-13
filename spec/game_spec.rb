@@ -43,8 +43,9 @@ describe Game do
   describe GameModule do
     it 'Number of item in list the games equal to 1' do
       dc = App.new
+      length = dc.list_games.size
       dc.add_game('true', '2021-07-07', '2011-04-04', 'Mike', 'Atherton')
-      expect(dc.list_games.size).to eq(1)
+      expect(dc.list_games.size).to eq(length+1)
     end
   end
 end
