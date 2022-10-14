@@ -42,7 +42,8 @@ describe Author do
     it 'returns author object' do
       dc = App.new
       length = dc.list_authors.size
-      expect(dc.add_author(@author)[length]).to eq({ 'id' => '099', 'first_name' => 'George', 'last_name' => 'Wilkinson' })
+      expect(dc.add_author(@author)[length]).to eq({ 'id' => '099', 'first_name' => 'George',
+                                                     'last_name' => 'Wilkinson' })
     end
   end
 
