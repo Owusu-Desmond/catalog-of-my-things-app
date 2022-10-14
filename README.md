@@ -2,25 +2,25 @@
 
 # Ruby Capstone Project - Catalog my thing
 
-> In this porject, We worked with Object Oriented to build Catalog my thing application.
+> In this porject, We worked with Object Oriented programming to build Catalog my thing application.
+> Catalog my things app is a Console Application that will help users to keep a record of different types of things they own like: books, music albums, movies, and games.
 
 ## Built With
 
 - Ruby
+- Rspec
+- Rubocop
 
 ## Getting Started
 
-Create a repo then clone it and open into Visual Studio Code
+To get a local copy up and running follow these simple example steps.
 
-### Setup
+### 🛠️ Installation & Set Up
 
-- Download and install Visual Studio, Ruby
-- Command line / Git bash
+If you dont have Ruby installed on your computer, you can download it from [here](https://www.ruby-lang.org/en/downloads/).
 
-### Install
+If you installed git you can clone the code to your machine, or download a ZIP of all the files directly.
 
-- Visual Studio Code
-- Ruby
 
 ## Authors
 
@@ -37,15 +37,16 @@ Create a repo then clone it and open into Visual Studio Code
 - Dev.to [desmondowusudev](https://dev.to/desmondowusudev)
 
 👤 **Molnar Emese**
+
 - [Mesi21](https://github.com/Mesi21)
-- [LinkedIn](https://www.linkedin.com/in/emesemesimolnar/)  
+- [LinkedIn](https://www.linkedin.com/in/emesemesimolnar/)
 - [Twitter](https://twitter.com/buksimesi21)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/Owusu-Desmond/catalog-of-my-things-app/issues).
 
 ## Show your support
 
