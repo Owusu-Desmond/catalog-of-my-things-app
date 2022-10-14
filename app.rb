@@ -13,8 +13,8 @@ class App
   include BookModule
 
   def initialize
-    @games = load_all_games
     @authors = load_all_authors
+    @games = load_all_games
     @books = []
     @labels = []
   end
