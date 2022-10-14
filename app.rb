@@ -23,7 +23,7 @@ class App
   include AuthorModule
   include BookModule
   include SaveDataModule
-  
+
   def initialize
     @games = load_all_games
     @authors = load_all_authors
@@ -31,7 +31,7 @@ class App
     @books = load_items('books')
     @labels = load_items('labels')
   end
-  
+
   def run
     @preserve.load_genre_data
     @preserve.load_music_albums_data
