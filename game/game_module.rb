@@ -19,9 +19,7 @@ module GameModule
     @games.each_with_index do |game, index|
       author_full_name = ''
       @authors.each do |author|
-        if game['auth_id'] == author['id']
-          author_full_name = author['first_name'] + " "+ author['last_name']
-        end
+        author_full_name = "#{author['first_name']} #{author['last_name']}" if game['auth_id'] == author['id']
       end
       puts "#{index}) ID: #{game['id']} | Multiplayer: #{game['multiplayer']} " \
            "| Last played at: #{game['last_played_at']} | Published Date: #{game['publish_date']} " \
