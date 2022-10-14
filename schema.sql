@@ -44,3 +44,19 @@ CREATE TABLE game(
     FOREIGN KEY(author_id) REFERENCES author(id)
     FOREIGN KEY(label_id) REFERENCES label(id)
 );
+
+CREATE TABLE Genre(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name VARCHAR(50),
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE music_album(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  publish_date DATE,
+  archived BOOLEAN,
+  on_spotify BOOLEAN,
+  genre_id INT,
+  PRIMARY KEY(id),
+  FOREIGN KEY(genre_id) REFERENCES genre(id);
+);
