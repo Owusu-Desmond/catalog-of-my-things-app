@@ -35,7 +35,6 @@ class App
   def run
     @preserve.load_genre_data
     @preserve.load_music_albums_data
-    puts @preserve.music_albums
     puts 'Welcome to Catalog my thing'
     loop do
       menu_message
