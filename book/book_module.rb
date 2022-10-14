@@ -22,28 +22,29 @@ module BookModule
   end
 
   def save_book(book)
-    @books << book
+    @books << { 'id' => book.id, 'publish_date' => book.publish_date, 'publisher' => book.publisher,
+                'cover_state' => book.cover_state }
     puts 'Book has been created successfully'
   end
 
   def save_label(label)
-    @labels << label
+    @labels << { 'title' => label.title, 'color' => label.color }
     puts 'Label has been added successfully'
   end
 
   def list_all_books
     puts "There are no books\n" if @books.empty?
     @books.each do |book|
-      puts "[Id]: #{book.id} / [Publish date]: #{book.publish_date}
-        - [Publisher] #{book.publisher} / [cover state]: #{book.cover_state}"
+      puts "ID: [#{book['id']}] / [Publish date]: #{book['publish_date']}
+        - [Publisher] #{book['publisher']} / [cover state]: #{book['cover_state']}"
     end
     gets
   end
 
   def list_all_labels
-    puts 'There are no books and labels' if @labels.empty?
+    puts 'There are no labels' if @labels.empty?
     @labels.each do |label|
-      puts "[Label title]: #{label.title} -[Label color]: #{label.color}"
+      puts "[Label title]: #{label['title']} -[Label color]: #{label['color']}"
     end
     gets
   end
