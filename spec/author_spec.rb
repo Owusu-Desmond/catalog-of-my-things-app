@@ -3,7 +3,7 @@ require_relative 'spec_helper'
 
 describe Author do
   before :each do
-    @author = Author.new('George', 'Wilkinson')
+    @author = Author.new('George', 'Wilkinson', '099')
   end
 
   describe '#new' do
@@ -42,7 +42,7 @@ describe Author do
     it 'returns author object' do
       dc = App.new
       length = dc.list_authors.size
-      expect(dc.add_author(@author)[length]).to eq({ 'first_name' => 'George', 'last_name' => 'Wilkinson' })
+      expect(dc.add_author(@author)[length]).to eq({ 'id' => '099', 'first_name' => 'George', 'last_name' => 'Wilkinson' })
     end
   end
 
