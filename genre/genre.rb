@@ -1,6 +1,5 @@
 require_relative '../item'
 
-# class for genre
 class Genre < Item
   attr_accessor :name, :items
 
