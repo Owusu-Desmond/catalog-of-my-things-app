@@ -42,7 +42,7 @@ class App
       menu_message
       print 'Enter your option: '
       option = gets.chomp.to_i
-      if option == 0
+      if option.zero?
         puts 'Thanks for using the app'
         save_all_games_to_file(@games)
         save_all_authors_to_file(@authors)
@@ -93,7 +93,7 @@ class App
     preserve_items(@labels, 'labels')
   end
 
-  def options(option)
+  def options(option) # rubocop:disable Metrics/MethodLength, Metrics/CyclomaticComplexity
     case option
     when 1
       list_all_books

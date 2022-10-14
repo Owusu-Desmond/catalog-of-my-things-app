@@ -10,6 +10,7 @@ class Preserve
 
   def load_genre_data
     return unless File.exist?('./data/genres.json')
+
     genres = JSON.parse(File.read('./data/genres.json'))
     genres.each do |genre|
       new_genre = Genre.new(genre['id'], genre['name'])
@@ -19,6 +20,7 @@ class Preserve
 
   def load_music_albums_data
     return unless File.exist?('./data/music_albums.json')
+
     music_albums = JSON.parse(File.read('./data/music_albums.json'))
     music_albums.each_with_index do |music_album, index|
       new_music_album = MusicAlbum.new(music_album['id'], music_album['publish_date'], music_album['on_spotify'])
