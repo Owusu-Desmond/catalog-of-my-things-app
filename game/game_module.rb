@@ -5,7 +5,7 @@ module GameModule
     new_game.author = author
 
     add_author(author)
-    @games.push({ 'multiplayer' => new_game.multiplayer, 'last_played_at' => new_game.last_played_at,
+    @games.push({ 'id' => new_game.id, 'multiplayer' => new_game.multiplayer, 'last_played_at' => new_game.last_played_at,
                   'publish_date' => new_game.publish_date })
     'Game has been created successfully'
   end
@@ -13,7 +13,7 @@ module GameModule
   def list_games
     puts "There is no game in the list\n" if @games.empty?
     @games.each_with_index do |game, index|
-      puts "#{index}) Multiplayer: #{game['multiplayer']} Last played at: #{game['last_played_at']} " \
+      puts "#{index}) ID: #{game['id']} Multiplayer: #{game['multiplayer']} Last played at: #{game['last_played_at']} " \
            "Published Date: #{game['publish_date']}"
     end
   end
@@ -23,7 +23,7 @@ module GameModule
     data = []
 
     games.each do |game|
-      data.push({ multiplayer: game['multiplayer'], last_played_at: game['last_played_at'].strftime('%Y-%m-%d'),
+      data.push({ id: game['id'], multiplayer: game['multiplayer'], last_played_at: game['last_played_at'].strftime('%Y-%m-%d'),
                   publish_date: game['publish_date'] })
     end
 
@@ -37,8 +37,8 @@ module GameModule
     if File.exist?(file_name) && File.read(file_name) != ''
       file_data = JSON.parse(File.read(file_name))
       file_data.each do |game|
-        new_game = Game.new(game['multiplayer'], game['last_played_at'], game['publish_date'])
-        data.push({ 'multiplayer' => new_game.multiplayer, 'last_played_at' => new_game.last_played_at,
+        new_game = Game.new(game['multiplayer'], game['last_played_at'], game['publish_date'], game['id'])
+        data.push({ 'id' => new_game.id, 'multiplayer' => new_game.multiplayer, 'last_played_at' => new_game.last_played_at,
                     'publish_date' => new_game.publish_date })
       end
     end
