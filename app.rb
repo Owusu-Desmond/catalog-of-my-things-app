@@ -6,17 +6,19 @@ require_relative 'author/author_module'
 require_relative 'book/book'
 require_relative 'book/book_module'
 require_relative 'label/label'
+require_relative 'preserve/save_module'
 
 class App
   include GameModule
   include AuthorModule
   include BookModule
+  include SaveDataModule
 
   def initialize
     @games = load_all_games
     @authors = load_all_authors
-    @books = []
-    @labels = []
+    @books = load_items('books')
+    @labels = load_items('labels')
   end
 
   def run
@@ -27,8 +29,7 @@ class App
       option = gets.chomp.to_i
       if option == 8
         puts 'Thanks for using the app'
-        save_all_games_to_file(@games)
-        save_all_authors_to_file(@authors)
+        save_in_file
         break
       end
       options(option)
@@ -63,6 +64,13 @@ class App
     puts add_game(multiplayer, last_played_at, publish_date, author_first_name, author_last_name)
   end
 
+  def save_in_file
+    save_all_games_to_file(@games)
+    save_all_authors_to_file(@authors)
+    preserve_items(@books, 'books')
+    preserve_items(@labels, 'labels')
+  end
+
   def options(option)
     case option
     when 1
@@ -80,5 +88,12 @@ class App
     when 7
       gather_data
     else puts 'Invalid option' end
+  end
+
+  private
+
+  def load_files
+    # @books = load_items('books')
+    # @labels = load_items('labels')
   end
 end
