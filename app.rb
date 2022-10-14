@@ -32,6 +32,7 @@ class App
   include GameModule
   include AuthorModule
   include BookModule
+  include SaveDataModule
 
   def run
     @preserve.load_genre_data
