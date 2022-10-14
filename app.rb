@@ -1,20 +1,23 @@
+require 'json'
 require_relative 'game/game'
 require_relative 'game/game_module'
 require_relative 'author/author'
 require_relative 'author/author_module'
 require_relative 'music_album/music_album'
 require_relative 'music_album/music_album_module'
-
 require_relative 'genre/genre'
 require_relative 'genre/genre_module'
 require_relative 'preserve'
 require 'securerandom'
-# require_relative 'music_album-genre-actions'
-# require_relative 'start_preserve_actions'
+require_relative 'book/book'
+require_relative 'book/book_module'
+require_relative 'label/label'
 
-# class application
+
 class App
   def initialize
+    @games = load_all_games
+    @authors = load_all_authors
     @preserve = Preserve.new
     @games = []
     @authors = []
@@ -24,6 +27,9 @@ class App
   include AuthorModule
   include MusicAlbumModule
   include GenreModule
+  include GameModule
+  include AuthorModule
+  include BookModule
 
   def run
     @preserve.load_genre_data
@@ -34,10 +40,12 @@ class App
       menu_message
       print 'Enter your option: '
       option = gets.chomp.to_i
-      if option == 7
+      if option == 0
+        puts 'Thanks for using the app'
+        save_all_games_to_file(@games)
+        save_all_authors_to_file(@authors)
         @preserve.store_music_album_data
         @preserve.store_genre_data
-        puts 'Thanks for using the app'
         break
       end
       options(option)
@@ -47,13 +55,17 @@ class App
   def menu_message
     puts '--------------------------------'
     puts 'Welcome to my catalog app'
-    puts '1: List all genres (e.g \'Comedy\', \'Thriller\')'
-    puts '2: List all music albums'
-    puts '3: Add a music album'
-    puts '4: List all authors'
-    puts '5: List of games'
-    puts '6: Add a game'
-    puts '7: Exit the application'
+    puts '1: List all books'
+    puts '2: List all labels'
+    puts '3: Add a book'
+    puts '4: Add a label'
+    puts '5: List all authors'
+    puts '6: List of games'
+    puts '7: Add a game'
+    puts '8: List all genres (e.g \'Comedy\', \'Thriller\')'
+    puts '9: List all music albums'
+    puts '10: Add a music album'
+    puts '0: Exit the application'
     puts '--------------------------------'
   end
 
@@ -62,25 +74,37 @@ class App
     gets.chomp
   end
 
+  def gather_data
+    multiplayer = read_input('Is game multiplayer? [true, false]')
+    last_played_at = read_input('Game Last played at [yyyy-mm-dd]')
+    publish_date = read_input('Game publish at [yyyy-mm-dd]')
+    author_first_name = read_input('Author first name')
+    author_last_name = read_input('Author last name')
+    puts add_game(multiplayer, last_played_at, publish_date, author_first_name, author_last_name)
+  end
+
   def options(option)
     case option
     when 1
-      list_genres
+      list_all_books
     when 2
-      list_music_albums
+      list_all_labels
     when 3
-      add_music_album
+      add_book
     when 4
-      puts list_authors
+      add_label
     when 5
-      list_games
+      list_authors
     when 6
-      multiplayer = read_input('Is game multiplayer? [true, false]')
-      last_played_at = read_input('Game Last played at [yyyy-mm-dd]')
-      publish_date = read_input('Game publish at [yyyy-mm-dd]')
-      author_first_name = read_input('Author first name')
-      author_last_name = read_input('Author last name')
-      puts add_game(multiplayer, last_played_at, publish_date, author_first_name, author_last_name)
+      list_games
+    when 7
+      gather_data
+    when 8
+      list_genres
+    when 9
+      list_music_albums
+    when 10
+      add_music_album
     else puts 'Invalid option' end
   end
 end
