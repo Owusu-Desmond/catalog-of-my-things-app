@@ -15,16 +15,6 @@ require_relative 'label/label'
 require_relative 'preserve/save_module'
 
 class App
-  def initialize
-    @games = load_all_games
-    @authors = load_all_authors
-    @preserve = Preserve.new
-    @games = []
-    @authors = []
-    @books = load_items('books')
-    @labels = load_items('labels')
-  end
-
   include GameModule
   include AuthorModule
   include MusicAlbumModule
@@ -34,10 +24,17 @@ class App
   include BookModule
   include SaveDataModule
 
+  def initialize
+    @games = load_all_games
+    @authors = load_all_authors
+    @preserve = Preserve.new
+    @books = load_items('books')
+    @labels = load_items('labels')
+  end
+
   def run
     @preserve.load_genre_data
     @preserve.load_music_albums_data
-    puts @preserve.music_albums
     puts 'Welcome to Catalog my thing'
     loop do
       menu_message

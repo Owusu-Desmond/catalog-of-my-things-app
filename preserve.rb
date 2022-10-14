@@ -25,7 +25,6 @@ class Preserve
     music_albums.each_with_index do |music_album, index|
       new_music_album = MusicAlbum.new(music_album['id'], music_album['publish_date'], music_album['on_spotify'])
       # use the increased index to grab genre for music album
-      puts @genres.size
       new_music_album.genre = @genres[index]
       @music_albums << new_music_album
     end
